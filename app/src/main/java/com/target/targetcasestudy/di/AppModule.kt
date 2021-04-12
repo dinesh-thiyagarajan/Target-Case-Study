@@ -2,6 +2,7 @@ package com.target.targetcasestudy.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.target.targetcasestudy.TargetApp
 import com.target.targetcasestudy.helpers.AppConstants
 import dagger.Module
 import dagger.Provides
@@ -18,6 +19,11 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class AppModule {
+
+    @[Provides Singleton]
+    fun providesApplication(): TargetApp {
+        return TargetApp.application
+    }
 
     @[Provides Singleton]
     fun providesGson(): Gson {
