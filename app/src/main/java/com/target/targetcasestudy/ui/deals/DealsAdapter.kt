@@ -28,6 +28,9 @@ class DealItemAdapter : ListAdapter<Product, DealItemViewHolder>(ProductDiffUtil
             product.let {
                 bindView(holder, product)
             }
+            holder.itemView.setOnClickListener {
+                productSelectedCallback.onProductSelected(product)
+            }
         }
     }
 

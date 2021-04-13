@@ -12,6 +12,9 @@ import com.target.targetcasestudy.R
 import com.target.targetcasestudy.data.BaseResponse
 import com.target.targetcasestudy.data.Product
 import com.target.targetcasestudy.data.Status
+import com.target.targetcasestudy.helpers.AppConstants
+import com.target.targetcasestudy.ui.MainActivity
+import com.target.targetcasestudy.ui.dealDetails.DealDetailsFragment
 import com.target.targetcasestudy.viewModels.ProductViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_product_list.*
@@ -85,6 +88,10 @@ class DealsListFragment : Fragment(), ProductSelectedCallback {
     }
 
     override fun onProductSelected(product: Product) {
-
+        val bundle = Bundle()
+        bundle.putParcelable(AppConstants.BUNDLE_PRODUCT, product)
+        val dealDetailsFragment = DealDetailsFragment()
+        dealDetailsFragment.arguments = bundle
+        (activity as MainActivity).switchFragment(dealDetailsFragment)
     }
 }

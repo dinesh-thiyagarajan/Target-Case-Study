@@ -5,12 +5,15 @@ import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.target.targetcasestudy.R
 import com.target.targetcasestudy.helpers.UiHelper
+
 
 open class BaseActivity(@LayoutRes private val layoutId: Int) : AppCompatActivity() {
 
     lateinit var parentLayout: View
+    private lateinit var fragmentTransaction: FragmentTransaction
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,9 +22,10 @@ open class BaseActivity(@LayoutRes private val layoutId: Int) : AppCompatActivit
     }
 
     protected fun showFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .add(R.id.container, fragment)
-            .commit()
+        fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.addToBackStack(fragment.tag)
+        fragmentTransaction.add(R.id.container, fragment)
+        fragmentTransaction.commit()
     }
 
     protected fun showSnackBar(msg: String?) {

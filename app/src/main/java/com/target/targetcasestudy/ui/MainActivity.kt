@@ -3,6 +3,7 @@ package com.target.targetcasestudy.ui
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
 import com.target.targetcasestudy.R
 import com.target.targetcasestudy.ui.deals.DealsListFragment
 import com.target.targetcasestudy.ui.payment.PaymentDialogFragment
@@ -28,6 +29,19 @@ class MainActivity : BaseActivity(layoutId = R.layout.activity_main) {
                 true
             }
             else -> false
+        }
+    }
+
+    fun switchFragment(fragment: Fragment) {
+        showFragment(fragment = fragment)
+    }
+
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 1) {
+            supportFragmentManager.popBackStackImmediate()
+        } else {
+            finish()
         }
     }
 }
