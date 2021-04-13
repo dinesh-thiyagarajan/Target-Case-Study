@@ -15,6 +15,6 @@ class DealDetailsFragment : Fragment() {
       inflater: LayoutInflater, container: ViewGroup?,
       savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_deal_item, container, false)
+        return inflater.inflate(R.layout.fragment_product_details, container, false)
     }
 }

@@ -12,4 +12,6 @@
   <string name="credit_card_number_hint">Credit card number</string>
 
   <string name="close_caps">CLOSE</string>
+  <string name="something_went_wrong">Something went wrong Please try again later !!</string>
+  <string name="hint_ship_or">Ship or</string>
 </resources>

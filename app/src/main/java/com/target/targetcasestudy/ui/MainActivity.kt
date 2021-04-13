@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.target.targetcasestudy.R
-import com.target.targetcasestudy.ui.deals.DealListFragment
+import com.target.targetcasestudy.ui.deals.DealsListFragment
 import com.target.targetcasestudy.ui.payment.PaymentDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -13,7 +13,7 @@ class MainActivity : BaseActivity(layoutId = R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        showFragment(DealListFragment())
+        showFragment(DealsListFragment())
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

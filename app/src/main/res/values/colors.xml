@@ -6,4 +6,11 @@
 
   <color name="gray_color">#666666</color>
   <color name="red_color">#cc0000</color>
+  <color name="lighter_gray">#ddd</color>
+  <color name="white">#FFFFFF</color>
+  <color name="black">#000000</color>
+  <color name="color_product_title">@color/black</color>
+  <color name="color_aisle">@color/red_color</color>
+  <color name="color_price">@color/black</color>
+  <color name="color_ship_hint">@color/black</color>
 </resources>

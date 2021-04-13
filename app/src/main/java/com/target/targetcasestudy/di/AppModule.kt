@@ -4,6 +4,9 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.target.targetcasestudy.TargetApp
 import com.target.targetcasestudy.helpers.AppConstants
+import com.target.targetcasestudy.network.ApiHelper
+import com.target.targetcasestudy.network.ApiHelperImpl
+import com.target.targetcasestudy.network.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,8 +41,8 @@ class AppModule {
         logging.level = HttpLoggingInterceptor.Level.BODY
         val httpClient = OkHttpClient.Builder()
         httpClient.addInterceptor(logging)
-        httpClient.callTimeout(5, TimeUnit.SECONDS)
-        httpClient.connectTimeout(5, TimeUnit.SECONDS)
+        httpClient.callTimeout(10, TimeUnit.SECONDS)
+        httpClient.connectTimeout(10, TimeUnit.SECONDS)
         return httpClient.build()
     }
 
@@ -51,5 +54,11 @@ class AppModule {
             .client(okHttpClient)
             .build()
     }
+
+    @[Provides Singleton]
+    fun providesApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
+
+    @[Provides Singleton]
+    fun providesApiHelper(apiHelper: ApiHelperImpl): ApiHelper = apiHelper
 
 }
