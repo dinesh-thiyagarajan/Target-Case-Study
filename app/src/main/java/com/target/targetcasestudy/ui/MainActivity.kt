@@ -1,13 +1,13 @@
 package com.target.targetcasestudy.ui
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
+import android.view.View
 import androidx.fragment.app.Fragment
 import com.target.targetcasestudy.R
 import com.target.targetcasestudy.ui.deals.DealsListFragment
 import com.target.targetcasestudy.ui.payment.PaymentDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.custom_toolbar.*
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity(layoutId = R.layout.activity_main) {
@@ -15,27 +15,31 @@ class MainActivity : BaseActivity(layoutId = R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         showFragment(DealsListFragment())
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.credit_card -> {
-                PaymentDialogFragment().show(supportFragmentManager, "CreditCardValidation")
-                true
-            }
-            else -> false
+        toolBarCustomizations()
+        btn_back.setOnClickListener {
+            onBackPressed()
+            toggleBackButtonVisibility(View.GONE)
         }
+    }
+
+    private fun toolBarCustomizations() {
+        toolbar_top.inflateMenu(R.menu.menu_main)
+        toolbar_top.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.credit_card -> onCreditCardClicked()
+            }
+            true
+        }
+    }
+
+    private fun onCreditCardClicked() {
+        PaymentDialogFragment()
+            .show(supportFragmentManager, "CreditCardValidation")
     }
 
     fun switchFragment(fragment: Fragment) {
         showFragment(fragment = fragment)
     }
-
 
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount > 1) {
@@ -43,5 +47,13 @@ class MainActivity : BaseActivity(layoutId = R.layout.activity_main) {
         } else {
             finish()
         }
+    }
+
+    fun toggleBackButtonVisibility(visibility: Int) {
+        btn_back.visibility = visibility
+    }
+
+    fun showErrorSnackbar(msg: String?) {
+        showSnackBar(msg)
     }
 }

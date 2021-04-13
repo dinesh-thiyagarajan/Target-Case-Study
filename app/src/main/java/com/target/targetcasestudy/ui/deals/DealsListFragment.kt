@@ -38,6 +38,7 @@ class DealsListFragment : Fragment(), ProductSelectedCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        (activity as MainActivity).toggleBackButtonVisibility(View.GONE)
         initAdapter()
         productViewModel.productsList.observe(viewLifecycleOwner, {
             parseProductsAndUpdateUi(it)
@@ -77,6 +78,7 @@ class DealsListFragment : Fragment(), ProductSelectedCallback {
         shimmer_container.visibility = View.GONE
         shimmer_container.stopShimmer()
         rv_products.visibility = View.GONE
+        (activity as MainActivity).showErrorSnackbar(message)
     }
 
     private fun showLoadingScreen() {
