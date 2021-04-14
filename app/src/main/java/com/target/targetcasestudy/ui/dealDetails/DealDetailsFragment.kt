@@ -1,6 +1,7 @@
 package com.target.targetcasestudy.ui.dealDetails
 
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import com.target.targetcasestudy.data.Product
 import com.target.targetcasestudy.helpers.AppConstants
 import com.target.targetcasestudy.ui.MainActivity
 import kotlinx.android.synthetic.main.fragment_product_details.*
+import java.math.BigDecimal
 
 
 class DealDetailsFragment : Fragment() {
@@ -39,6 +41,16 @@ class DealDetailsFragment : Fragment() {
         tv_product_price.text = product.regularPrice.displayString
         tv_product_description.text = product.description
         tv_product_title.text = product.title
+        var discountedPrice = "0"
+        kotlin.runCatching {
+            discountedPrice = fetchDiscountedPrice(product?.regularPrice?.amountInCents)
+        }
+        tv_discounted_price.text = Html.fromHtml("Reg: <s>\$$discountedPrice </s>")
+    }
+
+    private fun fetchDiscountedPrice(amountInCents: Int): String {
+        val payment: BigDecimal = BigDecimal(amountInCents - 100).movePointLeft(2)
+        return payment.toString()
     }
 
 

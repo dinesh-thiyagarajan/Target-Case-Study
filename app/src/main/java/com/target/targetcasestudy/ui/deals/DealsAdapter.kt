@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.target.targetcasestudy.R
 import com.target.targetcasestudy.data.Product
+import java.util.*
 
 class DealItemAdapter : ListAdapter<Product, DealItemViewHolder>(ProductDiffUtilCallback()) {
 
@@ -25,8 +26,8 @@ class DealItemAdapter : ListAdapter<Product, DealItemViewHolder>(ProductDiffUtil
     override fun onBindViewHolder(holder: DealItemViewHolder, position: Int) {
         if (position != -1) {
             val product = getItem(position)
-            product.let {
-                bindView(holder, product)
+            product?.let {
+                bindView(holder, it)
             }
             holder.itemView.setOnClickListener {
                 productSelectedCallback.onProductSelected(product)
@@ -41,7 +42,7 @@ class DealItemAdapter : ListAdapter<Product, DealItemViewHolder>(ProductDiffUtil
             .into(holder.ivProduct)
         holder.tvProductPrice.text = product.regularPrice.displayString
         holder.tvShipHint.text = holder.itemView.context.getString(R.string.hint_ship_or)
-        holder.tvAisle.text = product.aisle
+        holder.tvAisle.text = product.aisle.toUpperCase(Locale.getDefault())
     }
 
     fun setOnProductSelectedCallback(productSelectedCallback: ProductSelectedCallback) {
