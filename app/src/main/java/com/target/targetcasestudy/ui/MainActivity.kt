@@ -44,6 +44,7 @@ class MainActivity : BaseActivity(layoutId = R.layout.activity_main) {
     }
 
     override fun onBackPressed() {
+        toggleBackButtonVisibility(View.GONE)
         if (supportFragmentManager.backStackEntryCount > 1) {
             supportFragmentManager.popBackStackImmediate()
         } else {
@@ -52,7 +53,7 @@ class MainActivity : BaseActivity(layoutId = R.layout.activity_main) {
     }
 
     fun toggleBackButtonVisibility(visibility: Int) {
-        btn_back.visibility = visibility
+        btn_back?.visibility = visibility
     }
 
     fun showErrorSnackbar(msg: String?) {
