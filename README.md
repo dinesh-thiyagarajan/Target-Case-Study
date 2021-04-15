@@ -1,8 +1,8 @@
 # TargetCaseStudy
-An Android Application which Fetches a List of Products from a Remote API and Displays it in a List.Option for performing a payment via Credit card is also there with validations for the same
+* An Android application which fetches a list of Products from a Remote API and displays it in a List, Option for performing a payment via Credit card is also Implemented with validations for the same
 
 ## Description
-The app fetches a list of products from a remote API and displays in the screen, We can see further description of a product by selecting it
+* The app fetches a list of products from a remote API and displays in the screen, we can see further description of a product as well by selecting it
 
 ## Getting Started
 
@@ -38,8 +38,7 @@ dineshkarthie@gmail.com
 
 ## Version History
 
-* 1
-    * Initial Release
+* 1 Initial Release
 
 ## Acknowledgments
- * Icon used for No Signal is from Flat Icon.
+ * Icon used for No Signal is from http://flaticon.com
