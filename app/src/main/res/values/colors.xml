@@ -13,4 +13,5 @@
   <color name="color_aisle">@color/red_color</color>
   <color name="color_price">@color/black</color>
   <color name="color_ship_hint">@color/black</color>
+  <color name="err_color">#fd907e</color>
 </resources>

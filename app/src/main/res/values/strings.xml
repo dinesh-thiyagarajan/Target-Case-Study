@@ -14,4 +14,5 @@
     <string name="add_to_list">Add to List</string>
     <string name="add_to_cart">Add to Cart</string>
     <string name="valid_credit_card">Please enter a valid credit card number</string>
+    <string name="retry">Retry</string>
 </resources>

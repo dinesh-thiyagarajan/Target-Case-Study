@@ -43,6 +43,10 @@ class DealsListFragment : Fragment(), ProductSelectedCallback {
         productViewModel.productsList.observe(viewLifecycleOwner, {
             parseProductsAndUpdateUi(it)
         })
+
+        btn_retry.setOnClickListener {
+            productViewModel.getProducts()
+        }
     }
 
     private fun initAdapter() {

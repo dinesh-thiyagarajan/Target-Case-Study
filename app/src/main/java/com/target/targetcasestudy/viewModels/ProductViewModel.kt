@@ -27,7 +27,7 @@ class ProductViewModel @Inject constructor(private val productRepository: Produc
     }
 
 
-    private fun getProducts() = viewModelScope.launch {
+    fun getProducts() = viewModelScope.launch {
         productsList.postValue(BaseResponse.loading(null))
         productRepository.getDeals().enqueue(object : Callback<DealsResponse?> {
             override fun onResponse(
