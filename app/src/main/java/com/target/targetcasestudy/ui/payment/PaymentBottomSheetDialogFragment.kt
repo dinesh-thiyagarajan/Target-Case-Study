@@ -48,7 +48,7 @@ class PaymentBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
         et_credit_card.doAfterTextChanged {
             it?.let {
-                if (!it.isNullOrEmpty()) {
+                if (it.isNotEmpty()) {
                     val isValid = Validators.validateCreditCard(it.toString())
                     if (isValid) {
                         submit.isEnabled = true
