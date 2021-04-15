@@ -33,12 +33,12 @@
 
 ## Authors
 
-Dinesh Thiyagarajan
-dineshkarthie@gmail.com
+* Dinesh Thiyagarajan
+  dineshkarthie@gmail.com
 
 ## Version History
 
-* 1 Initial Release
+* Initial Release VersionName "1.0"
 
 ## Acknowledgments
  * Icon used for No Signal is from http://flaticon.com
