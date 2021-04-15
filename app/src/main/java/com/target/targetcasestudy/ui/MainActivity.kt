@@ -5,7 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.target.targetcasestudy.R
 import com.target.targetcasestudy.ui.deals.DealsListFragment
-import com.target.targetcasestudy.ui.payment.PaymentDialogFragment
+import com.target.targetcasestudy.ui.payment.PaymentBottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.custom_toolbar.*
 
@@ -33,8 +33,10 @@ class MainActivity : BaseActivity(layoutId = R.layout.activity_main) {
     }
 
     private fun onCreditCardClicked() {
-        PaymentDialogFragment()
-            .show(supportFragmentManager, "CreditCardValidation")
+        PaymentBottomSheetDialogFragment.instance.show(
+            supportFragmentManager,
+            "CreditCardValidation"
+        )
     }
 
     fun switchFragment(fragment: Fragment) {

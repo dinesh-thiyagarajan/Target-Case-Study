@@ -21,6 +21,39 @@ package com.target.targetcasestudy.data
  * @return true if a credit card number is believed to be valid,
  * otherwise false
  */
-fun validateCreditCard(creditCardNumber: String): Boolean {
-    return false
+
+
+object Validators {
+
+    fun validateCreditCard(creditCardNumber: String): Boolean {
+        if (creditCardNumber.length < 13 || creditCardNumber.length > 19) {
+            return false
+        }
+        //Drop last digit in the number
+        val lastVal = creditCardNumber.takeLast(1)
+        val truncatedString = creditCardNumber.dropLast(1)
+        val charList = truncatedString
+            .reversed()
+            .map {
+                it.toInt()
+            }
+            .toMutableList()
+
+        var sum = 0
+        charList.map {
+            if (it % 2 != 0) {
+                it * 2
+            }
+
+            if (it > 9) {
+                it - 9
+            }
+
+            sum += it
+        }
+
+        val modVal = sum % 10
+        return lastVal.toInt() == modVal
+    }
 }
+
