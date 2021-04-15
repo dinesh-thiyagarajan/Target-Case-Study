@@ -56,10 +56,9 @@ class PaymentBottomSheetDialogFragment : BottomSheetDialogFragment() {
                     } else {
                         submit.isEnabled = false
                         tv_error.visibility = View.VISIBLE
+                        tv_error.text = getString(R.string.valid_credit_card)
                     }
                 } else {
-                    tv_error.visibility = View.VISIBLE
-                    tv_error.text = getString(R.string.valid_credit_card)
                     submit.isEnabled = false
                 }
             }
