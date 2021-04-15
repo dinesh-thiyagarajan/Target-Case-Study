@@ -1,5 +1,8 @@
 package com.target.targetcasestudy.ui.deals
 
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.target.targetcasestudy.R
 import com.target.targetcasestudy.data.Product
 import java.util.*
+
 
 class DealItemAdapter : ListAdapter<Product, DealItemViewHolder>(ProductDiffUtilCallback()) {
 
@@ -41,7 +45,17 @@ class DealItemAdapter : ListAdapter<Product, DealItemViewHolder>(ProductDiffUtil
             .load(product.imageUrl)
             .into(holder.ivProduct)
         holder.tvProductPrice.text = product.regularPrice.displayString
-        holder.tvShipHint.text = holder.itemView.context.getString(R.string.hint_ship_or)
+
+        val wordToSpan: Spannable =
+            SpannableString(holder.itemView.context.getString(R.string.hint_ship_or))
+        wordToSpan.setSpan(
+            ForegroundColorSpan(holder.itemView.context.resources.getColor(R.color.lighter_gray)),
+            5,
+            7,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        holder.tvShipHint.text = wordToSpan
         holder.tvAisle.text = product.aisle.toUpperCase(Locale.getDefault())
     }
 
