@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 import com.target.targetcasestudy.R
 import com.target.targetcasestudy.data.Product
 import java.util.*
@@ -20,6 +22,8 @@ import java.util.*
 class DealItemAdapter : ListAdapter<Product, DealItemViewHolder>(ProductDiffUtilCallback()) {
 
     lateinit var productSelectedCallback: ProductSelectedCallback
+    private val requestOption = RequestOptions()
+        .placeholder(R.drawable.ic_launcher_foreground).centerCrop()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DealItemViewHolder {
         val itemView = LayoutInflater.from(parent.context)
@@ -43,6 +47,8 @@ class DealItemAdapter : ListAdapter<Product, DealItemViewHolder>(ProductDiffUtil
         holder.tvProductName.text = product.title
         Glide.with(holder.itemView.context)
             .load(product.imageUrl)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .apply(requestOption)
             .into(holder.ivProduct)
         holder.tvProductPrice.text = product.regularPrice.displayString
 
